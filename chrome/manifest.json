@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+  "name": "My Extension",
+  "version": "versionString",
+  "default_locale": "en",
+  "description": "A plain text description",
+  "icons": {
+  },
+  "browser_action": {},
+  "author": "Edem Agbenyo",
+  "background": {
+    "persistent": false,
+    "scripts":[]
+  },
+  "homepage_url": "http://path/to/homepage"
+  
+}
