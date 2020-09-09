@@ -24,7 +24,7 @@ exports.getLatestJobs = functions.https.onRequest(async (req, res) => {
         list.push(jobs[job].attribs.title)
       }
     }
-    res.json({jobs:list})
+    return res.json({jobs:list})
   }).catch(err => {
     console.log(err);
   });
