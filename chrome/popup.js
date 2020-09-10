@@ -1,6 +1,15 @@
 
 const table = document.querySelector('table');
 const body = document.querySelector('body');
+const job_position_input = document.querySelector('#job_position_input');
+
+function load_saved_positions(){
+  chrome.storage.sync.get(['job_position'],(result)=>{
+    console.log(Object.keys(result))
+    job_position_input.value= Object.keys(result).length!==0 && result.job_position
+  })
+}
+
 chrome.runtime.sendMessage({contentScriptQuery:'getlatestjobs'},(jobs)=>{
   
   if(jobs){
@@ -18,3 +27,5 @@ chrome.runtime.sendMessage({contentScriptQuery:'getlatestjobs'},(jobs)=>{
   }
 
 })
+
+load_saved_positions()
