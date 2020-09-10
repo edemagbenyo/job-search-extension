@@ -1,11 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jobbmatic</title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Remotic</title>
+    <style>
+      main.container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+      }
+      main.container h1{
+        text-decoration: underline;
+      }
+      tr td a {
+        text-decoration: none;
+        color: #007fff;
+      }
+      tr td h2 {
+        text-align: center;
+      }
+      form {
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <h1>Remotic Job Options page</h1>
+      <table>
+        <tr>
+          <td colspan="6"><h2>Job platforms</h2></td>
+        </tr>
+        <tr>
+          <td>
+            <a target="_blank" href="https://remoteok.io/">Remoteok </a
+            ><input type="checkbox" id="remoteok" />
+          </td>
+          <td>
+            <a target="_blank" href="https://remote.co/remote-jobs/">Remote.co </a
+            ><input type="checkbox" id="remoteco" />
+          </td>
+          <td>
+            <a target="_blank" href="https://remoters.net/jobs/">Remoters </a
+            ><input type="checkbox" id="remoters" />
+          </td>
+          <td>
+            <a target="_blank" href="https://remotive.io/">Remotive</a
+            ><input type="checkbox" id="remotive" />
+          </td>
+          <td>
+            <a target="_blank" href="http://weworkremotely.com/">WeWorkRemotely</a
+            ><input type="checkbox" id="weworkremotely" />
+          </td>
+          <td>
+            <a target="_blank" href="https://www.workingnomads.co/jobs">WorkingNomads</a
+            ><input type="checkbox" id="workingnomads" />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="6"><h2>Job positions</h2></td>
+        </tr>
+        <tr>
+          <td colspan="6">
+            <form>
+              <label for="New position">Create new position</label>
+              <input type="text" />
+              <input type="submit" value="Save" />
+            </form>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="6">
+            <a target="_blank" href="https://remoteok.io/">Full stack </a
+            ><input type="checkbox" />
+            <a target="_blank" href="https://remoteok.io/">Software engineer </a
+              ><input type="checkbox" />
+          </td>
+          
+        </tr>
+        <tr>
+          <td colspan="6"><h2>Posted date</h2></td>
+        </tr>
+        <tr>
+          <td><span>12hrs ago</span> <input type="checkbox" name="" id="" /></td>
+          <td><span>1 day ago</span> <input type="checkbox" name="" id="" /></td>
+          <td><span>7 days ago</span> <input type="checkbox" name="" id="" /></td>
+          <td><span>14 days ago</span> <input type="checkbox" name="" id="" /></td>
+          <td><span>1 month ago</span> <input type="checkbox" name="" id="" /></td>
+          <td><span>6 months ago</span> <input type="checkbox" name="" id="" /></td>
+        </tr>
+      </table>
+    </main>
+  </body>
 </html>
