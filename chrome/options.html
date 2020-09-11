@@ -10,17 +10,33 @@
         align-items: center;
         flex-direction: column;
       }
-      main.container h1{
+      main.container h1 {
         text-decoration: underline;
       }
       tr td a {
         text-decoration: none;
-        color: #007fff;
+        color: #273338;
       }
       tr td h2 {
         text-align: center;
       }
-      form {
+      input[type=text] {
+        border-radius: 5px;
+        padding:5px;
+        border: .15em solid #1CB55C;
+      }
+      input[type=submit] {
+        border-radius: 5px;
+        padding:5px;
+        color: white;
+        background-color:#1CB55C;
+        border: .1em solid #1CB55C;
+      }
+      .positions div{
+        display: inline-block;
+      }
+      .flash_job_position{
+        color:#E74D3C ;
       }
     </style>
   </head>
@@ -37,7 +53,8 @@
             ><input type="checkbox" id="remoteok" />
           </td>
           <td>
-            <a target="_blank" href="https://remote.co/remote-jobs/">Remote.co </a
+            <a target="_blank" href="https://remote.co/remote-jobs/"
+              >Remote.co </a
             ><input type="checkbox" id="remoteco" />
           </td>
           <td>
@@ -49,11 +66,13 @@
             ><input type="checkbox" id="remotive" />
           </td>
           <td>
-            <a target="_blank" href="http://weworkremotely.com/">WeWorkRemotely</a
+            <a target="_blank" href="http://weworkremotely.com/"
+              >WeWorkRemotely</a
             ><input type="checkbox" id="weworkremotely" />
           </td>
           <td>
-            <a target="_blank" href="https://www.workingnomads.co/jobs">WorkingNomads</a
+            <a target="_blank" href="https://www.workingnomads.co/jobs"
+              >WorkingNomads</a
             ><input type="checkbox" id="workingnomads" />
           </td>
         </tr>
@@ -62,32 +81,58 @@
         </tr>
         <tr>
           <td colspan="6">
-            <form>
+            <form id="new_job_position_form">
               <label for="New position">Create new position</label>
-              <input type="text" />
+              <input type="text" id="new_job_position_input" />
               <input type="submit" value="Save" />
+              <span class="flash_job_position"></span>
             </form>
           </td>
         </tr>
-        <tr>
-          <td colspan="6">
-            <a target="_blank" href="https://remoteok.io/">Full stack </a
-            ><input type="radio" name="job_position" />
-            <a target="_blank" href="https://remoteok.io/">Software engineer </a
-              ><input type="radio" name="job_position" />
+        <!-- <tr>
+          <td colspan="6" class="positions">
+            <div>
+              <span>Full stack </span>
+              <input
+                type="radio"
+                id="full_stack"
+                name="job_position"
+                value="Full stack"
+              />
+            </div>
+            <div>
+              <span>Software engineer </span
+              ><input
+                type="radio"
+                id="software_engineer"
+                name="job_position"
+                value="Software engineer"
+              />
+            </div>
           </td>
-          
-        </tr>
+        </tr> -->
         <tr>
           <td colspan="6"><h2>Posted date</h2></td>
         </tr>
         <tr>
-          <td><span>12hrs ago</span> <input type="checkbox" name="" id="" /></td>
-          <td><span>1 day ago</span> <input type="checkbox" name="" id="" /></td>
-          <td><span>7 days ago</span> <input type="checkbox" name="" id="" /></td>
-          <td><span>14 days ago</span> <input type="checkbox" name="" id="" /></td>
-          <td><span>1 month ago</span> <input type="checkbox" name="" id="" /></td>
-          <td><span>6 months ago</span> <input type="checkbox" name="" id="" /></td>
+          <td>
+            <span>12hrs ago</span> <input type="checkbox" name="" id="" />
+          </td>
+          <td>
+            <span>1 day ago</span> <input type="checkbox" name="" id="" />
+          </td>
+          <td>
+            <span>7 days ago</span> <input type="checkbox" name="" id="" />
+          </td>
+          <td>
+            <span>14 days ago</span> <input type="checkbox" name="" id="" />
+          </td>
+          <td>
+            <span>1 month ago</span> <input type="checkbox" name="" id="" />
+          </td>
+          <td>
+            <span>6 months ago</span> <input type="checkbox" name="" id="" />
+          </td>
         </tr>
       </table>
     </main>
