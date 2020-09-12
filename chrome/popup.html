@@ -10,10 +10,15 @@
         text-align: center;
         color: grey;
       }
+      form{
+        padding: 10px;
+        display: flex;
+      }
       input[type="text"] {
         border-radius: 5px;
         padding: 5px;
         border: 0.15em solid #1cb55c;
+        width: 75%;
       }
       input[type="submit"] {
         border-radius: 5px;
@@ -21,33 +26,79 @@
         color: white;
         background-color: #1cb55c;
         border: 0.1em solid #1cb55c;
+        width:25%;
+      }
+      table{
+        width: 100%;
+        border-collapse: collapse;
+      }
+      table td{
+        padding: 0;
+      }
+      table td div{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
       }
     </style>
   </head>
   <body>
     <p class="loading">Loading jobs.....</p>
-    <p>
-      <label for="">Remote ok</label
-      ><input type="checkbox" value="remoteok" id="remoteok" />
-      <label for="remoteco">Remoteco</label
-      ><input type="checkbox" value="remoteco" id="remoteco" />
-      </p><p>
-      <label for="remote">Remoters</label
-      ><input type="checkbox" value="remoters" id="remoters" />
-      <label for="remote">Remotive</label
-      ><input type="checkbox" value="remotive" id="remotive" />
-      </p><p>
-      <label for="remote">WeWorkRemotely</label
-      ><input type="checkbox" value="weworkremotely" id="weworkremotely" />
-      <label for="remote">Working Nomads</label
-      ><input type="checkbox" value="workingnomads" id="workingnomads" />
-    </p>
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            <div><label for="">Remote ok</label
+              ><input type="checkbox" value="remoteok" id="remoteok" /></div>
+          </td>
+          <td>
+            <div>
+              <label for="remoteco">Remoteco</label
+                ><input type="checkbox" value="remoteco" id="remoteco" />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <label for="remote">Remoters</label
+                ><input type="checkbox" value="remoters" id="remoters" />
+            </div>
+          </td>
+          <td>
+            <div>
+              <label for="remote">Remotive</label
+                ><input type="checkbox" value="remotive" id="remotive" />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <label for="remote">WeWorkRemotely</label
+                ><input
+                  type="checkbox"
+                  value="weworkremotely"
+                  id="weworkremotely"
+                />
+            </div>
+          </td>
+          <td>
+            <div>
+              <label for="remote">Working Nomads</label
+                ><input type="checkbox" value="workingnomads" id="workingnomads" />
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
     <form>
       <input
         type="text"
         id="job_position_input"
         placeholder="Enter your job position"
       />
+      <input type="submit" value="Search">
     </form>
     <table style="width: 300px">
       <thead>
