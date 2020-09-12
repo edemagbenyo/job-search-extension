@@ -6,6 +6,7 @@ const new_job_position_input = document.querySelector(
 const new_job_position_form = document.querySelector("#new_job_position_form");
 const flash_job_position = document.querySelector(".flash_job_position");
 const job_sites = document.querySelector(".job_sites");
+const job_dates = document.querySelector(".job_dates");
 
 chrome.storage.sync.get(["job_position"], (result) => {
   new_job_position_input.value = result["job_position"];

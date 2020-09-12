@@ -1,33 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jobbmatic</title>
-  <style>
-    .loading{
-      display: block;
-      font-size: 1.5em;
-      text-align: center;
-      color: grey;
-    }
-  </style>
-</head>
-<body>
-
-  <p class="loading">Loading jobs.....</p>
-  <form>
-    <input type="text" id="job_position_input" placeholder="Enter your job position">
-  </form>
-  <table style="width: 300px;">
-    <thead>
-      <tr>
-        <th colspan="1">Job listings for ...</th>
-      </tr>
-    </thead>
-    <tbody>
-    </tbody>
-  </table>
-  <script src="./popup.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Remotic</title>
+    <style>
+      .loading {
+        display: block;
+        text-align: center;
+        color: grey;
+      }
+      input[type="text"] {
+        border-radius: 5px;
+        padding: 5px;
+        border: 0.15em solid #1cb55c;
+      }
+      input[type="submit"] {
+        border-radius: 5px;
+        padding: 5px;
+        color: white;
+        background-color: #1cb55c;
+        border: 0.1em solid #1cb55c;
+      }
+    </style>
+  </head>
+  <body>
+    <p class="loading">Loading jobs.....</p>
+    <p>
+      <label for="">Remote ok</label
+      ><input type="checkbox" value="remoteok" id="remoteok" />
+      <label for="remoteco">Remoteco</label
+      ><input type="checkbox" value="remoteco" id="remoteco" />
+      </p><p>
+      <label for="remote">Remoters</label
+      ><input type="checkbox" value="remoters" id="remoters" />
+      <label for="remote">Remotive</label
+      ><input type="checkbox" value="remotive" id="remotive" />
+      </p><p>
+      <label for="remote">WeWorkRemotely</label
+      ><input type="checkbox" value="weworkremotely" id="weworkremotely" />
+      <label for="remote">Working Nomads</label
+      ><input type="checkbox" value="workingnomads" id="workingnomads" />
+    </p>
+    <form>
+      <input
+        type="text"
+        id="job_position_input"
+        placeholder="Enter your job position"
+      />
+    </form>
+    <table style="width: 300px">
+      <thead>
+        <tr>
+          <th colspan="1">Job listings for ...</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <script src="./popup.js"></script>
+  </body>
 </html>
