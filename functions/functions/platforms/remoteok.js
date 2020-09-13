@@ -7,13 +7,13 @@ const buildLink = function(position){
 
 exports.remoteok = async function(cheerio, got,position_name){
   const built_position_name = position_name ? buildLink(position_name) :""
-  console.log("position_name",built_position_name)
    const getJobs = await got("https://remoteok.io/"+built_position_name)
    const response = await getJobs;
     const $ = cheerio.load(response.body);
     let list = [];
     const body = $('body')
     let jobs = body.find('tr.job');
+    
     for(let job in jobs){
       let td = jobs[job];
       let info;
@@ -25,9 +25,9 @@ exports.remoteok = async function(cheerio, got,position_name){
         let company = companyA.text()
         let link = "https://remoteok.io" + position.attr('href')
          info= {title,company,link,site:"remoteOK",time}
+         list.push(info)
       }
 
-      list.push(info)
     }
     return list
   
