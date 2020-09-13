@@ -40,22 +40,38 @@ chrome.runtime.sendMessage({contentScriptQuery:'getlatestjobs'},(jobs)=>{
   }
   let tbody = table.querySelector('tbody');
 
+  console.log("result jobs",jobs)
+
   for(let job of jobs){
     let tr = document.createElement('tr');
     let td = document.createElement('td');
+    let div = document.createElement('div');
+    let view_btn = document.createElement('a');
+
     let company = document.createElement('span');
+    let link = document.createElement('a');
+
     company.setAttribute('class','company')
     let site = document.createElement('label');
 
-    let link = document.createElement('a');
+    view_btn.setAttribute('class','view_btn')
+    view_btn.textContent="View "
+    view_btn.style.color="#FFFFFF"
+    view_btn.style.maxHeight="30px"
+    view_btn.style.lineHeight="30px"
+    view_btn.style.padding="5px"
+    view_btn.setAttribute('target','_blank')
+    view_btn.setAttribute('href',job.link)
+
     site.textContent=job.site
     company.textContent = job.company;
     company.append(site)
     link.textContent=job.title
-    link.setAttribute('target','_blank')
-    link.setAttribute('href',job.link)
-    td.append(company)
-    td.append(link)
+    
+    div.append(company)
+    div.append(link)
+    td.append(div)
+    td.append(view_btn)
     tr.append(td)
     tbody.append(tr)
   }
