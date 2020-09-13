@@ -7,6 +7,7 @@ const buildLink = function(position){
 
 exports.remoteok = async function(cheerio, got,position_name){
   const built_position_name = position_name ? buildLink(position_name) :""
+  console.log("position_name",built_position_name)
    const getJobs = await got("https://remoteok.io/"+built_position_name)
    const response = await getJobs;
     const $ = cheerio.load(response.body);

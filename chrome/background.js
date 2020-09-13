@@ -12,7 +12,6 @@ chrome.runtime.onInstalled.addListener(function () {
     ]);
   });
 });
-
 chrome.storage.sync.get(["job_position"], (result) => {
   chrome.runtime.onMessage.addListener(function (
     request,
@@ -20,10 +19,9 @@ chrome.storage.sync.get(["job_position"], (result) => {
     sendResponse
   ) {
     if (request.contentScriptQuery == "getlatestjobs") {
-      let position = result["job_position"];
       var url =
         "http://localhost:5001/job-ext/us-central1/getLatestJobs?position_name=" +
-        position;
+        request.position_name;
 
       fetch(url)
         .then((response) => {
