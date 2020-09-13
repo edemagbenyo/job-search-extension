@@ -14,16 +14,16 @@ chrome.runtime.onMessage.addListener(
   function (request, sender, sendResponse) {
     if (request.contentScriptQuery == 'getlatestjobs') {
       var url = 'http://localhost:5001/job-ext/us-central1/getLatestJobs';
-      // fetch(url)
-      //   .then(response => {
-      //     return response.json()
-      //   })
-      //   .then(({jobs})=>{
-      //     console.log("jobs...",jobs)
-      //     sendResponse(jobs)
-      //     return jobs
-      //   })
-      //   .catch(error => console.log('error!!!',error))
+      fetch(url)
+        .then(response => {
+          return response.json()
+        })
+        .then(({jobs})=>{
+          console.log("jobs...",jobs)
+          sendResponse(jobs)
+          return jobs
+        })
+        .catch(error => console.log('error!!!',error))
       return true;  // Will respond asynchronously.
     }
   });

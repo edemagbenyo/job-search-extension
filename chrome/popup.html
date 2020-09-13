@@ -11,14 +11,16 @@
         color: grey;
       }
       form{
-        padding: 10px;
+        /* padding: 10px; */
         display: flex;
+        justify-content: space-between;
+        margin:0;
       }
       input[type="text"] {
         border-radius: 5px;
         padding: 5px;
         border: 0.15em solid #1cb55c;
-        width: 75%;
+        width: 70%;
       }
       input[type="submit"] {
         border-radius: 5px;
@@ -26,7 +28,7 @@
         color: white;
         background-color: #1cb55c;
         border: 0.1em solid #1cb55c;
-        width:25%;
+        width:20%;
       }
       table{
         width: 100%;
@@ -40,11 +42,21 @@
         display: flex;
         justify-content: space-between;
       }
+      .loading{
+        border-radius: 5px;
+        display: block;
+        visibility: hidden;
+        text-align: center;
+        background-color: #FFBB14;
+        padding: 2px;
+        color: #FFFFFF;
+      }
+
     </style>
   </head>
   <body>
-    <p class="loading">Loading jobs.....</p>
-    <table>
+    <p class="loading"></p>
+    <!-- <table>
       <tbody>
         <tr>
           <td>
@@ -91,8 +103,8 @@
           </td>
         </tr>
       </tbody>
-    </table>
-    <form>
+    </table> -->
+    <form id="job_position_form">
       <input
         type="text"
         id="job_position_input"
@@ -100,13 +112,9 @@
       />
       <input type="submit" value="Search">
     </form>
+    <span class="flash_job_position"></span>
     <table style="width: 300px">
-      <thead>
-        <tr>
-          <th colspan="1">Job listings for ...</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
+      <tbody ></tbody>
     </table>
     <script src="./popup.js"></script>
   </body>
