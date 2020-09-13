@@ -18,8 +18,7 @@ chrome.runtime.onMessage.addListener(
         .then(response => {
           return response.json()
         })
-        .then(({jobs})=>{
-          console.log("jobs...",jobs)
+        .then((jobs)=>{
           sendResponse(jobs)
           return jobs
         })

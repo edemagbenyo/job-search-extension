@@ -1,3 +1,8 @@
+
+const buildLink = function(){
+
+}
+
 exports.remoteok = async function(cheerio, got){
    const getJobs = await got("https://remoteok.io/")
    
@@ -15,7 +20,7 @@ exports.remoteok = async function(cheerio, got){
         let companyA = $(jobs[job]).find('a.companyLink');
         let company = companyA.text()
         let link = "https://remoteok.io" + position.attr('href')
-         info= {title,company,link}
+         info= {title,company,link,site:"remoteOK"}
       }
 
       list.push(info)

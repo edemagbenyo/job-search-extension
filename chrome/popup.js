@@ -43,7 +43,19 @@ chrome.runtime.sendMessage({contentScriptQuery:'getlatestjobs'},(jobs)=>{
   for(let job of jobs){
     let tr = document.createElement('tr');
     let td = document.createElement('td');
-    td.textContent=job
+    let company = document.createElement('span');
+    company.setAttribute('class','company')
+    let site = document.createElement('label');
+
+    let link = document.createElement('a');
+    site.textContent=job.site
+    company.textContent = job.company;
+    company.append(site)
+    link.textContent=job.title
+    link.setAttribute('target','_blank')
+    link.setAttribute('href',job.link)
+    td.append(company)
+    td.append(link)
     tr.append(td)
     tbody.append(tr)
   }

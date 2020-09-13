@@ -31,6 +31,7 @@
         width:20%;
       }
       table{
+        margin-top: 4px;
         width: 100%;
         border-collapse: collapse;
       }
@@ -50,6 +51,25 @@
         background-color: #FFBB14;
         padding: 2px;
         color: #FFFFFF;
+      }
+      span.company label {
+        background-color: #FFBB14;
+        border-radius: 4px;
+        color: #FFFFFF;
+        padding: 2px;
+        margin-left: 1em;
+      }
+      tbody.joblist td{
+        border: 1px solid #979797;
+        padding: 5px;
+        border-radius: 5px;
+      }
+      tbody.joblist a{
+        display: block;
+        color:#0F4DA4;
+        text-decoration: none;
+        font-size: 1.2em;
+        padding: 3px 0;
       }
 
     </style>
@@ -114,7 +134,9 @@
     </form>
     <span class="flash_job_position"></span>
     <table style="width: 300px">
-      <tbody ></tbody>
+      <tbody class="joblist">
+        
+      </tbody>
     </table>
     <script src="./popup.js"></script>
   </body>
