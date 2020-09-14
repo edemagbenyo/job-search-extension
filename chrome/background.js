@@ -20,7 +20,7 @@ chrome.storage.sync.get(["job_position"], (result) => {
   ) {
     if (request.contentScriptQuery == "getlatestjobs") {
       var url =
-        "http://localhost:5001/job-ext/us-central1/getLatestJobs?position_name=" +
+        "https://us-central1-job-ext.cloudfunctions.net/getLatestJobs?position_name=" +
         request.position_name;
 
       fetch(url)

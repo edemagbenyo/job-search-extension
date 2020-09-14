@@ -13,7 +13,8 @@
     "storage",
     "declarativeContent",
     "activeTab",
-    "http://localhost:5001/"
+    "http://localhost:5001/",
+    "https://us-central1-job-ext.cloudfunctions.net/"
   ],
   "options_page": "options.html",
   "browser_action": {

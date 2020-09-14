@@ -1,8 +1,10 @@
 
 const buildLink = function(position){
-
   return "remote-"+position.toLowerCase().split(" ").join("-")+"-jobs"
+}
 
+const postedDate = function(date){
+  
 }
 
 exports.remoteok = async function(cheerio, got,position_name){
@@ -17,7 +19,7 @@ exports.remoteok = async function(cheerio, got,position_name){
     for(let job in jobs){
       let td = jobs[job];
       let info;
-      if(typeof td ==='object' && td.type=='tag' &&  td.name== 'tr'){
+      if(typeof td ==='object' && td.type==='tag' &&  td.name=== 'tr'){
         let title = $(jobs[job]).find('td.company_and_position h2').text()
         let position = $(jobs[job]).find('a.preventLink');
         let companyA = $(jobs[job]).find('a.companyLink');

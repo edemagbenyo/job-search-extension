@@ -18,7 +18,7 @@ exports.remotive = async function (cheerio, got, position_name) {
     for (let job in jobs) {
       let li = jobs[job];
       let info;
-      if (typeof li === "object" && li.type == "tag" && li.name == "li") {
+      if (typeof li === "object" && li.type === "tag" && li.name === "li") {
         let title = $(jobs[job]).find("div.position a").text();
         let time = $(jobs[job]).find(".job-date span").text();
         let company = $(jobs[job]).find(".company span").first().text();
