@@ -1,6 +1,6 @@
 {
   "name": "Remotic ",
-  "description": "Get list of job based on user preferences",
+  "description": "Get remote jobs without the need to browser many sites.",
   "version": "1.0",
   "manifest_version": 2,
   "background": {
@@ -12,7 +12,6 @@
   "permissions": [
     "storage",
     "declarativeContent",
-    "activeTab",
     "http://localhost:5001/",
     "https://us-central1-job-ext.cloudfunctions.net/"
   ],
@@ -20,17 +19,17 @@
   "browser_action": {
     "default_popup": "popup.html",
     "default_icon": {
-      "16": "images/get_started16.png",
-      "32": "images/get_started32.png",
-      "48": "images/get_started48.png",
-      "128": "images/get_started128.png"
+      "16": "images/16.png",
+      "32": "images/32.png",
+      "48": "images/48.png",
+      "128": "images/128.png"
     }
   },
   "icons": {
-    "16": "images/get_started16.png",
-    "32": "images/get_started32.png",
-    "48": "images/get_started48.png",
-    "128": "images/get_started128.png"
+    "16": "images/16.png",
+    "32": "images/32.png",
+    "48": "images/48.png",
+    "128": "images/128.png"
   },
   "commands": {
     "_execute_browser_action": {
