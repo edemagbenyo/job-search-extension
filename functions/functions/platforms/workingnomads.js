@@ -9,7 +9,7 @@ exports.remoteok = async function(cheerio, got){
    for(let job in jobs){
      let td = jobs[job];
      let info;
-     if(typeof td ==='object' && td.type=='tag' &&  td.name== 'td'){
+     if(typeof td ==='object' && td.type==='tag' &&  td.name=== 'td'){
        let title = $(jobs[job]).children('h2').text()
        let position = $(jobs[job]).find('a.preventLink');
        let companyA = $(jobs[job]).find('a.companyLink');

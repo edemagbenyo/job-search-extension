@@ -29,8 +29,10 @@
         background-color: #1cb55c;
         border: 0.1em solid #1cb55c;
         width:20%;
+        cursor: pointer;
       }
       table{
+        margin-top: 4px;
         width: 100%;
         border-collapse: collapse;
       }
@@ -44,66 +46,69 @@
       }
       .loading{
         border-radius: 5px;
-        display: block;
-        visibility: hidden;
+        display: none;
         text-align: center;
         background-color: #FFBB14;
         padding: 2px;
         color: #FFFFFF;
       }
+      span.company {
+        font-weight: bold;
+        color:#273338;
+        display: inline-block;
+      }
+      span.company label {
+        background-color: #FFBB14;
+        border-radius: 4px;
+        color: #FFFFFF;
+        padding: 2px;
+        margin-left: 1em;
+      }
+      tbody.joblist td{
+        border: 1px solid #979797;
+        padding: 5px;
+        border-radius: 5px;
+        display: flex;
+        margin:2px 0;
+        justify-content: space-between;
+      }
+      tbody.joblist td div{
+       display: flex;
+       flex-direction: column;
+      }
+      tbody.joblist a{
+        display: block;
+        color:#0F4DA4;
+        text-decoration: none;
+        font-size: 1.2em;
+        padding: 3px 0;
+      }
+      .view_btn{
+       background-color: #e74d3c;
+       color:#FFFFFF;
+       padding: 5px;
+       text-decoration: none;
+       border-radius: 5px;
+       vertical-align: center;
+      }
+      .options{
+        font-size: .5em;
+        color: #1CB55C;
+        display: inline;
+        text-align: right;
+        cursor: pointer;
+      }
+      h2{
+        color: #273338;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
 
     </style>
   </head>
   <body>
-    <p class="loading"></p>
-    <!-- <table>
-      <tbody>
-        <tr>
-          <td>
-            <div><label for="">Remote ok</label
-              ><input type="checkbox" value="remoteok" id="remoteok" /></div>
-          </td>
-          <td>
-            <div>
-              <label for="remoteco">Remoteco</label
-                ><input type="checkbox" value="remoteco" id="remoteco" />
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div>
-              <label for="remote">Remoters</label
-                ><input type="checkbox" value="remoters" id="remoters" />
-            </div>
-          </td>
-          <td>
-            <div>
-              <label for="remote">Remotive</label
-                ><input type="checkbox" value="remotive" id="remotive" />
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div>
-              <label for="remote">WeWorkRemotely</label
-                ><input
-                  type="checkbox"
-                  value="weworkremotely"
-                  id="weworkremotely"
-                />
-            </div>
-          </td>
-          <td>
-            <div>
-              <label for="remote">Working Nomads</label
-                ><input type="checkbox" value="workingnomads" id="workingnomads" />
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table> -->
+    <h2>Remotic <a class="options">Options</a></h2>
     <form id="job_position_form">
       <input
         type="text"
@@ -112,9 +117,12 @@
       />
       <input type="submit" value="Search">
     </form>
+    <p class="loading">Searching jobs...</p>
     <span class="flash_job_position"></span>
     <table style="width: 300px">
-      <tbody ></tbody>
+      <tbody class="joblist">
+        
+      </tbody>
     </table>
     <script src="./popup.js"></script>
   </body>
