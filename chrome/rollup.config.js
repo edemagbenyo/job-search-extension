@@ -3,7 +3,9 @@
 import typescript from '@rollup/plugin-typescript'
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
-
+import VuePlugin from 'rollup-plugin-vue'
+import alias from 'rollup-plugin-alias'
+import moduleName from 'vue'
 import {
   chromeExtension,
   simpleReloader,
@@ -22,6 +24,10 @@ export default {
     typescript({lib: ["es5", "es6", "dom"], target: "es5"}),
     // the plugins below are optional
     resolve(),
-    commonjs()
+    commonjs(),
+    // VuePlugin(/* VuePluginOptions */),
+    alias({
+      'vue': require.resolve('vue/dist/vue.runtime.esm-bundler.js')
+    })
   ],
 }

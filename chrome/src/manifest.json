@@ -5,7 +5,7 @@
   "manifest_version": 2,
   "background": {
     "scripts": [
-      "background.js"
+      "background.ts"
     ],
     "persistent": false
   },

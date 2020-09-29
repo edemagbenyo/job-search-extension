@@ -1,3 +1,5 @@
+import { apiURL } from "./config";
+
 chrome.runtime.onInstalled.addListener(function () {
   chrome.declarativeContent.onPageChanged.removeRules(undefined, function () {
     chrome.declarativeContent.onPageChanged.addRules([
@@ -19,10 +21,7 @@ chrome.storage.sync.get(["job_position"], (result) => {
     sendResponse
   ) {
     if (request.contentScriptQuery == "getlatestjobs") {
-      var url =
-        "https://us-central1-job-ext.cloudfunctions.net/getLatestJobs?position_name=" +
-        request.position_name;
-
+      var url =`${apiURL}?position_name=${request.position_name}`;
       fetch(url)
         .then((response) => {
           return response.json();

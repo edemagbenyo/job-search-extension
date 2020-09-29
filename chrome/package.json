@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "rollup -c",
+    "build": "NODE_END=prod rollup -c",
+    "start": "rollup -c",
     "watch": "rollup -c -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,10 +17,15 @@
     "@rollup/plugin-node-resolve": "^9.0.0",
     "@rollup/plugin-typescript": "^6.0.0",
     "@types/chrome": "0.0.124",
+    "dotenv": "^8.2.0",
     "rollup": "^2.28.2",
     "rollup-plugin-chrome-extension": "^3.3.0"
   },
   "dependencies": {
-    "typescript": "^4.0.3"
+    "@vue/compiler-sfc": "^3.0.0",
+    "rollup-plugin-alias": "^2.2.0",
+    "rollup-plugin-vue": "^6.0.0-beta.10",
+    "typescript": "^4.0.3",
+    "vue": "^3.0.0"
   }
 }
