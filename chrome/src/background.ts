@@ -21,7 +21,6 @@ chrome.storage.sync.get(["job_position"], (result) => {
     sendResponse
   ) {
     if (request.contentScriptQuery == "getlatestjobs") {
-      console.log(apiURL)
       let url: string =`${apiURL}?position_name=${request.position_name}`;
       fetch(url)
         .then((response) => {
