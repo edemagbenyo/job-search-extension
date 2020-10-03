@@ -1,7 +1,7 @@
 
 export let apiURL: string = ""
-switch (process.env) {
-  case "prod" as unknown as NodeJS.ProcessEnv:
+switch ('ENV') {
+  case "production" as unknown:
     apiURL = "https://us-central1-job-ext.cloudfunctions.net/getLatestJobs"
     break;
   default:
