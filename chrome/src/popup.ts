@@ -7,7 +7,7 @@ const loading =  document.querySelector('.loading') as HTMLParagraphElement;
 const tbody = table.querySelector("tbody") as HTMLTableSectionElement;
 
 
-let saved_job_position=null;
+let saved_job_position: string="";
 const options = document.querySelector(".options") as HTMLAnchorElement;
 //Open options page
 options.addEventListener("click", (e) => {
@@ -21,6 +21,7 @@ function load_saved_positions() {
    
       if(Object.keys(result).length > 0) {
         job_position_input.value = result.job_position
+        loading.style.display = "block";
         get_latest_jobs(result.job_position||"");
         
       } else{
