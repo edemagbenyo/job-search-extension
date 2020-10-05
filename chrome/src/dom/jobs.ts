@@ -4,7 +4,8 @@ type Job = {
   company: string,
   title: string
 }
-export const createJobsTable = function(jobs: Job[]){
+export const createJobsTable = function(container: HTMLTableSectionElement ,jobs: Job[]){
+  container.innerHTML = "";
   for (let job of jobs) {
     let tr = document.createElement("tr");
     let td = document.createElement("td");
@@ -42,6 +43,6 @@ export const createJobsTable = function(jobs: Job[]){
     td.append(div);
     td.append(view_btn);
     tr.append(td);
-    tbody.append(tr);
+    container.append(tr);
   }
 }

@@ -1,3 +1,7 @@
+import {createJobsTable} from './dom/jobs'
+import { syncStore } from './helpers/index';
+
+
 const table = document.querySelector('table') as HTMLTableElement;
 const body = document.querySelector('body') as HTMLBodyElement;
 const job_position_input = document.querySelector('#job_position_input') as HTMLInputElement;
@@ -22,6 +26,7 @@ function load_saved_positions() {
       if(Object.keys(result).length > 0) {
         job_position_input.value = result.job_position
         loading.style.display = "block";
+
         get_latest_jobs(result.job_position||"");
         
       } else{
@@ -32,56 +37,29 @@ function load_saved_positions() {
 }
 
 function get_latest_jobs(position_name: string = '') {
+  chrome.storage.sync.get(['jobs_cache'],(result)=>{
+    console.log("saved jobs...",result)
+    console.log("saved jobs...")
+  });
+
   chrome.runtime.sendMessage(
     { contentScriptQuery: "getlatestjobs", position_name },
     (jobs) => {
       if (jobs) {
-        tbody.innerHTML = "";
         loading.style.display = "none";
       }
-
-      for (let job of jobs) {
-        let tr = document.createElement("tr");
-        let td = document.createElement("td");
-        let div = document.createElement("div");
-        let view_btn = document.createElement("a");
-
-        let company = document.createElement("span");
-        let link = document.createElement("a");
-
-        company.setAttribute("class", "company");
-        let site = document.createElement("label");
-
-        view_btn.setAttribute("class", "view_btn");
-        view_btn.textContent = "View ";
-        view_btn.style.color = "#FFFFFF";
-        view_btn.style.maxHeight = "30px";
-        view_btn.style.lineHeight = "30px";
-        view_btn.style.padding = "5px";
-        view_btn.setAttribute("target", "_blank");
-        view_btn.setAttribute("href", job.link);
-
-        site.textContent = job.site;
-        if (job.site == "remoteOK") {
-          site.style.backgroundColor = "#000000";
-        }
-        company.textContent = job.company;
-        company.append(site);
-
-        link.setAttribute("target", "_blank");
-        link.setAttribute("href", job.link);
-        link.textContent = job.title;
-
-        div.append(company);
-        div.append(link);
-        td.append(div);
-        td.append(view_btn);
-        tr.append(td);
-        tbody.append(tr);
-      }
+        //store jobs in localstorage
+        const lastJobs: string="";
+        syncStore('job_cache',jobs,()=>{
+          console.log("it is done!!!")
+        })
+        chrome.storage.sync.set({jobs_cache: JSON.stringify(jobs) } as {jobs_cache: string})
+      
+        createJobsTable(tbody, jobs);
     }
   );
 }
+
 
 //create new position
 job_position_form.addEventListener("submit", (e) => {
