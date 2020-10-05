@@ -1,5 +1,5 @@
 import {createJobsTable} from './dom/jobs'
-import { syncStore } from './helpers/index';
+import { syncCacheStore, getCacheStore } from './helpers/index';
 
 
 const table = document.querySelector('table') as HTMLTableElement;
@@ -37,10 +37,7 @@ function load_saved_positions() {
 }
 
 function get_latest_jobs(position_name: string = '') {
-  chrome.storage.sync.get(['jobs_cache'],(result)=>{
-    console.log("saved jobs...",result)
-    console.log("saved jobs...")
-  });
+  getCacheStore('job_cache',tbody)
 
   chrome.runtime.sendMessage(
     { contentScriptQuery: "getlatestjobs", position_name },
@@ -50,11 +47,13 @@ function get_latest_jobs(position_name: string = '') {
       }
         //store jobs in localstorage
         const lastJobs: string="";
-        syncStore('job_cache',jobs,()=>{
-          console.log("it is done!!!")
-        })
-        chrome.storage.sync.set({jobs_cache: JSON.stringify(jobs) } as {jobs_cache: string})
-      
+        try{
+          syncCacheStore('job_cache',jobs,()=>{
+            console.log("it is done!!!")
+          }) 
+        }catch(err){
+          console.log(`unable to save job cache${err}`)
+        };
         createJobsTable(tbody, jobs);
     }
   );

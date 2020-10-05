@@ -27,7 +27,7 @@ chrome.storage.sync.get(["job_position"], (result) => {
           return response.json();
         })
         .then((jobs) => {
-          console.log(jobs)
+          console.log("opened positions",jobs)
           sendResponse(jobs);
           return jobs;
         })
