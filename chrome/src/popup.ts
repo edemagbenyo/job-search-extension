@@ -44,7 +44,6 @@ function get_latest_jobs(position_name: string = '') {
     (jobs) => {
       if (jobs) {
         loading.style.display = "none";
-      }
         //store jobs in localstorage
         const lastJobs: string="";
         try{
@@ -55,6 +54,7 @@ function get_latest_jobs(position_name: string = '') {
           console.log(`unable to save job cache${err}`)
         };
         createJobsTable(tbody, jobs);
+      }
     }
   );
 }

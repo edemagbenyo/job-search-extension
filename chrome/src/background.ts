@@ -31,7 +31,10 @@ chrome.storage.sync.get(["job_position"], (result) => {
           sendResponse(jobs);
           return jobs;
         })
-        .catch((error) => console.log("error!!!", error));
+        .catch((error) => {
+          console.log("we have an error",chrome.runtime.lastError)
+           new Error(`Error ha${error} happened`)
+          });
       return true; // Will respond asynchronously.
     }
   });
