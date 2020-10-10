@@ -1,12 +1,11 @@
 import {createJobsTable} from './dom/jobs'
+import { filterByDate } from './helpers/filters';
 import { syncCacheStore, getCacheStore } from './helpers/index';
 
 
 const table = document.querySelector('table') as HTMLTableElement;
-const body = document.querySelector('body') as HTMLBodyElement;
 const job_position_input = document.querySelector('#job_position_input') as HTMLInputElement;
 const job_position_form = document.querySelector("#job_position_form") as HTMLFormElement;
-// const flash_job_position = document.querySelector(".flash_job_position") as HTMLSpanElement;
 const loading =  document.querySelector('.loading') as HTMLParagraphElement;
 const tbody = table.querySelector("tbody") as HTMLTableSectionElement;
 
@@ -43,17 +42,17 @@ function get_latest_jobs(position_name: string = '') {
     { contentScriptQuery: "getlatestjobs", position_name },
     (jobs) => {
       if (jobs) {
+        const filteredJobs = filterByDate(jobs as []);
         loading.style.display = "none";
         //store jobs in localstorage
         const lastJobs: string="";
         try{
-          syncCacheStore('job_cache',jobs,()=>{
-            console.log("it is done!!!")
+          syncCacheStore('job_cache',filteredJobs,()=>{
           }) 
         }catch(err){
           console.log(`unable to save job cache${err}`)
         };
-        createJobsTable(tbody, jobs);
+        createJobsTable(tbody, filteredJobs);
       }
     }
   );

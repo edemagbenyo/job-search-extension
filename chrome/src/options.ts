@@ -6,7 +6,7 @@ const new_job_position_input = document.querySelector(
 const new_job_position_form = document.querySelector("#new_job_position_form") as HTMLFormElement;
 const flash_job_position = document.querySelector(".flash_job_position") as HTMLSpanElement;
 const job_sites = document.querySelector(".job_sites") as HTMLTableRowElement;
-const job_dates = document.querySelector(".job_dates") as HTMLTableRowElement;
+const job_date = document.querySelector(".job_date") as HTMLTableRowElement;
 
 chrome.storage.sync.get(["job_position"], (result) => {
   new_job_position_input.value = result["job_position"];
@@ -17,6 +17,10 @@ chrome.storage.sync.get(["job_sites"], (result) => {
     chbx.checked = true;
   });
 });
+
+chrome.storage.sync.get(["job_date"],(result)=>{
+  console.log("result ",result)
+})
 
 //create new position
 new_job_position_form.addEventListener("submit", (e) => {
@@ -52,6 +56,13 @@ job_sites.addEventListener("change", (e: Event = {} as Event) => {
     });
   }
 });
+
+job_date.addEventListener('change',(e: Event)=>{
+  const el = e.target as HTMLInputElement
+  if(el.type ==='radio'){
+    chrome.storage.sync.set({ job_date: el.value }, ():void => {});
+  }
+})
 
 const caseTitle = (str: string): string => {
   let arr = str.split(" ");
