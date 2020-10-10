@@ -6,7 +6,8 @@ const new_job_position_input = document.querySelector(
 const new_job_position_form = document.querySelector("#new_job_position_form") as HTMLFormElement;
 const flash_job_position = document.querySelector(".flash_job_position") as HTMLSpanElement;
 const job_sites = document.querySelector(".job_sites") as HTMLTableRowElement;
-const job_date = document.querySelector(".job_date") as HTMLTableRowElement;
+const job_date = document.querySelector(".job_dates") as HTMLTableRowElement;
+
 
 chrome.storage.sync.get(["job_position"], (result) => {
   new_job_position_input.value = result["job_position"];
@@ -18,8 +19,14 @@ chrome.storage.sync.get(["job_sites"], (result) => {
   });
 });
 
+const date_radios = document.querySelectorAll(`input[name='job_date']`) as NodeList;
 chrome.storage.sync.get(["job_date"],(result)=>{
-  console.log("result ",result)
+  date_radios.forEach((radio: Node)=>{
+    const myradio = radio as HTMLInputElement
+    if(myradio.value==result.job_date){
+      myradio.checked = true
+    }
+  });
 })
 
 //create new position

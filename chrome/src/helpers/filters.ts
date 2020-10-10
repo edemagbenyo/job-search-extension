@@ -1,5 +1,5 @@
 export function filterByDate(jobs: []): []{
-  chrome
+  // chrome.storage.sync
 
   return jobs
 }
