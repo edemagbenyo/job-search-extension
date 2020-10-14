@@ -3,9 +3,6 @@ const buildLink = function(position){
   return "remote-"+position.toLowerCase().split(" ").join("-")+"-jobs"
 }
 
-const postedDate = function(date){
-  
-}
 
 exports.remoteok = async function(cheerio, got,position_name){
   const built_position_name = position_name ? buildLink(position_name) :""
