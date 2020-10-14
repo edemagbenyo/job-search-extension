@@ -1,16 +1,18 @@
-import {createJobsTable} from './dom/jobs'
-import { filterByDate } from './helpers/filters';
-import { syncCacheStore, getCacheStore } from './helpers/index';
+import { createJobsTable } from "./dom/jobs";
+import { filterByDate } from "./helpers/filters";
+import { syncCacheStore, getCacheStore } from "./helpers/index";
 
-
-const table = document.querySelector('table') as HTMLTableElement;
-const job_position_input = document.querySelector('#job_position_input') as HTMLInputElement;
-const job_position_form = document.querySelector("#job_position_form") as HTMLFormElement;
-const loading =  document.querySelector('.loading') as HTMLParagraphElement;
+const table = document.querySelector("table") as HTMLTableElement;
+const job_position_input = document.querySelector(
+  "#job_position_input"
+) as HTMLInputElement;
+const job_position_form = document.querySelector(
+  "#job_position_form"
+) as HTMLFormElement;
+const loading = document.querySelector(".loading") as HTMLParagraphElement;
 const tbody = table.querySelector("tbody") as HTMLTableSectionElement;
 
-
-let saved_job_position: string="";
+let saved_job_position: string = "";
 const options = document.querySelector(".options") as HTMLAnchorElement;
 //Open options page
 options.addEventListener("click", (e) => {
@@ -21,43 +23,43 @@ options.addEventListener("click", (e) => {
 });
 function load_saved_positions() {
   chrome.storage.sync.get(["job_position"], (result) => {
-   
-      if(Object.keys(result).length > 0) {
-        job_position_input.value = result.job_position
-        loading.style.display = "block";
+    if (Object.keys(result).length > 0) {
+      job_position_input.value = result.job_position;
+      loading.style.display = "block";
 
-        get_latest_jobs(result.job_position||"");
-        
-      } else{
-
-      }
-    saved_job_position = Object.keys(result).length !== 0 && result.job_position;  
+      get_latest_jobs(result.job_position || "");
+    } else {
+    }
+    saved_job_position =
+      Object.keys(result).length !== 0 && result.job_position;
   });
 }
 
-function get_latest_jobs(position_name: string = '') {
-  getCacheStore('job_cache',tbody)
+function get_latest_jobs(position_name: string = "") {
+  //Get saved jobs in cache and display in table.
+  getCacheStore("job_cache", tbody);
 
   chrome.runtime.sendMessage(
     { contentScriptQuery: "getlatestjobs", position_name },
     (jobs) => {
       if (jobs) {
-        const filteredJobs = filterByDate(jobs as []);
-        loading.style.display = "none";
-        //store jobs in localstorage
-        const lastJobs: string="";
-        try{
-          syncCacheStore('job_cache',filteredJobs,()=>{
-          }) 
-        }catch(err){
-          console.log(`unable to save job cache${err}`)
-        };
-        createJobsTable(tbody, filteredJobs);
+        filterByDate((date) => {
+          console.log("saved date",date)
+          loading.style.display = "none";
+          //store jobs in localstorage
+          const lastJobs: string = "";
+          //
+          try {
+            syncCacheStore("job_cache", jobs, () => {});
+          } catch (err) {
+            console.log(`unable to save job cache${err}`);
+          }
+          createJobsTable(tbody, jobs);
+        });
       }
     }
   );
 }
-
 
 //create new position
 job_position_form.addEventListener("submit", (e) => {
@@ -76,6 +78,5 @@ job_position_form.addEventListener("submit", (e) => {
 //     chbx.checked = true;
 //   });
 // });
-
 
 load_saved_positions();

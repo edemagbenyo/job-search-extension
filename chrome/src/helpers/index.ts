@@ -1,7 +1,6 @@
 import {createJobsTable} from '../dom/jobs'
 
 export function syncCacheStore(key:string, objectToStore:[], callback: ()=>void) {
-  console.log("jobs to cache",objectToStore);
   var jsonstr = JSON.stringify(objectToStore);
   var i = 0;
   // var storageObj : {[k:string]:any}={};
@@ -21,7 +20,6 @@ export function syncCacheStore(key:string, objectToStore:[], callback: ()=>void)
       jsonstr = jsonstr.substr(valueLength);
   }
 
-  console.log("chunked",storageObj)
     emptyCache(key);
 
     //Temp fix to cache emptying before saving
@@ -40,7 +38,6 @@ export function getCacheStore(key: string, container: HTMLTableSectionElement): 
         allCache += result[key + "_" + i]
       }
     }
-    console.log(allCache)
     const jobs = JSON.parse(allCache)
     createJobsTable(container,jobs)
   })
@@ -56,7 +53,7 @@ function emptyCache(key: string): void{
     let allCache:string = "";
     for(let i=0; i<Object.keys(result).length;i++){
       if(result[key+"_"+i]){
-        chrome.storage.sync.remove(key+"_"+i,()=>console.log("empty",i))
+        chrome.storage.sync.remove(key+"_"+i,()=>undefined)
       }
     } 
     return "done"; 
