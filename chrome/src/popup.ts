@@ -26,7 +26,7 @@ function load_saved_positions() {
     if (Object.keys(result).length > 0) {
       job_position_input.value = result.job_position;
       loading.style.display = "block";
-
+      console.log("latest jobs here")
       get_latest_jobs(result.job_position || "");
     } else {
     }

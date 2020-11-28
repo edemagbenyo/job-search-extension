@@ -12,8 +12,10 @@ exports.getLatestJobs = functions.https.onRequest(async (req, res) => {
   let userList = req.userList;
   //Get the list of user preference sites
   //do a for in 
-  let remoteokJobs =await remoteok(cheerio,got,req.query.position_name)
+  console.log("gettings remote jobs")
+  let remoteokJobs = await remoteok(cheerio,got,req.query.position_name)
   let remotiveJobs = await remotive(cheerio,got,req.query.position_name)
+  console.log(`Remotive jobs ${remotiveJobs}`)
   return res.json([...remoteokJobs, ...remotiveJobs])
   
 })

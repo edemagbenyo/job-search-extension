@@ -28,7 +28,11 @@ chrome.storage.sync.get(["job_position"], (result) => {
         })
         .then((jobs) => {
           console.log("opened positions",jobs)
-          sendResponse(jobs);
+          chrome.runtime.sendMessage('report reply',(e)=>{
+            console.log("Getting the information.");
+            const name = e;
+            sendResponse(jobs);
+          })
           return jobs;
         })
         .catch((error) => {
