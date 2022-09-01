@@ -30,7 +30,7 @@ const Popup: React.FC = () => {
         <Cog8ToothIcon className="h-6 w-6 text-blue-500" />
       </header>
       <form onSubmit={handleSubmit(onSubmit)} className="mt-3">
-        <input placeholder="Search a job title..." {...register("term")} className=" border-blue-500 border-2 w-full text-sm rounded-md p-1" />
+        <input placeholder="Search a job title..." {...register("term", { required: true })} className=" border-blue-500 border-2 w-full text-sm rounded-md p-1" />
       </form>
       <div>
         {jobs.map((job) => (
