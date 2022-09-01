@@ -15,7 +15,7 @@
 		"skipLibCheck": true,
 	},
 	"include": [
-		"source",
+		"src",
 		"webpack.config.js"
 	]
 }

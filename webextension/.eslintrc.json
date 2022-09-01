@@ -4,12 +4,7 @@
 		"@abhijithvijayan/eslint-config/node",
 		"@abhijithvijayan/eslint-config/react"
 	],
-	"parserOptions": {
-		"project": [
-			"./tsconfig.json"
-		],
-		"sourceType": "module"
-	},
+
 	"rules": {
 		"no-console": "off",
 		"no-extend-native": "off",
