@@ -13,9 +13,14 @@
 		/* Additional Checks */
 		"useDefineForClassFields": true,
 		"skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@lib/*": ["src/lib/*"],
+    }
 	},
 	"include": [
 		"src",
 		"webpack.config.js"
-	]
+	],
+  
 }

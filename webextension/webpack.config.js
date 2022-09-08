@@ -74,6 +74,7 @@ module.exports = {
     extensions: [".ts", ".tsx", ".js", ".json"],
     alias: {
       "webextension-polyfill-ts": path.resolve(path.join(__dirname, "node_modules", "webextension-polyfill-ts")),
+      "@lib": path.resolve(path.join(__dirname, "src", "lib")),
     },
   },
 
